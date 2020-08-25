@@ -34,8 +34,3 @@
     <div class="col-md-0"></div>
 			</div>
     </div>
-
-<!-- <p style="text-align:right; margin-right:2%;">August 2, 2020 - ALPHA Version 1.0.0</p>
-<p style="text-align:right; margin-right:2%;">August 3, 2020 - ALPHA Version 1.3.0</p>
-<p style="text-align:right; margin-right:2%;">August 6, 2020 - ALPHA Version 1.3.1</p>
-<p style="text-align:right; margin-right:2%;">August 8, 2020 - ALPHA Version 1.4.0</p> -->

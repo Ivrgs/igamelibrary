@@ -34,3 +34,5 @@
     <div class="col-md-0"></div>
 			</div>
     </div>
+
+    <!-- Gitlab and git hub integration test -->

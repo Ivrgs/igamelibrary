@@ -35,4 +35,4 @@
 			</div>
     </div>
 
-    <!-- Gitlab and git hub integration test -->
+    <!-- Gitlab and git hub integration test  -->

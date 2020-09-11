@@ -1,4 +1,6 @@
-﻿SQL:
+﻿Initiate Version 1 - September 11, 2020
+
+SQL:
 Username: root
 Password: N/A
 
@@ -24,17 +26,18 @@ Warning #FFC107
 Admin #34495E
 
 Future Plans:
--Overhaul CMS, including dividers
--Layout Consistensy
 -Custom Notification Alert
 - export whole database
-- Admin Dashboard (logs, changes, assets management) After i finished concluding activities
+- Admin Dashboard (logs, changes, assets management)
+
+Incremental Plans:
+-Overhaul CMS, including dividers
+-Layout Consistensy
+-Mobile Responsive
+-Code optimization (continues)
 
 Next Plans:
--Mobile Responsive
-- code optimization (continues)
-- code review
-- Deadline September
+- Change Color Scheme
 
 Work Logs:
 March 5, 2020
@@ -141,3 +144,8 @@ August 24, 2020
 - Layout 50% done
 - designs started
 - Background changed
+
+September 11 2020
+- Code Cleanup complete
+- CSS Minified
+- Initiate Final Build

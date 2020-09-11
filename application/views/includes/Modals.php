@@ -1,5 +1,3 @@
-<!-- AJAX -->
-
 <!-- Bootstrap modal -->
 <div class="modal fade" id="modal_form" role="dialog">
     <div class="modal-dialog">
@@ -82,10 +80,10 @@
                 <button type="button" id="btnSave" onclick="save();myAlertAdd();" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
+        </div>
+    </div>
+</div>
+
 
 <!-- Delete Game -->
 <div class="modal fade" id="ModalDeleteGame" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -111,10 +109,10 @@
         </div>
      </form>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
+    </div>
+  </div>
+</div>
+
 
 <!-- CMS ADD modal -->
 <div class="modal fade" id="modal_cmsadd" role="dialog">
@@ -147,10 +145,10 @@
                 <button type="button" id="btnSave" onclick="save_cms()" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
+        </div>
+    </div>
+</div>
+
 
 <!-- CMS UPDATE modal -->
 <div class="modal fade" id="modal_cmsupdate" role="dialog">
@@ -192,7 +190,7 @@
             <button type="button" id="btnUpdateCMS" onclick="cms_update()" class="btn btn-info">Update</button>
                 <button type="button"  id="btnDeleteCMS" onclick="cms_delete()" class="btn btn-danger">Delete</button>
                 </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
+        </div>
+    </div>
+</div>
+

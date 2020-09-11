@@ -11,7 +11,7 @@ $(document).ready(function() {
         "bInfo" : false,
         "processing": true,
         "serverSide": true,
-        "order": [0, "asc"], //Initial no order.
+        "order": [0, "asc"],
 
         // Load data for the table's content from an Ajax source
         "ajax": {
@@ -19,10 +19,9 @@ $(document).ready(function() {
             "type": "POST"
         },
 
-        //Set column definition initialisation properties.
         "columnDefs": [{ 
-                "targets": [ -1 ], //last column
-                "orderable": false, //set not orderable
+                "targets": [ -1 ],
+                "orderable": false,
                 "order": [0, "asc"]
             },  
             {
@@ -235,8 +234,8 @@ function cms_edit(){
     $('#formUpdateCMS')[0].reset(); 
     $('.form-groupCU').removeClass('has-error'); 
     $('.help-block').empty(); 
-    $('#modal_cmsupdate').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Update Content'); // Set Title to Bootstrap modal title
+    $('#modal_cmsupdate').modal('show');
+    $('.modal-title').text('Update Content');
 
     $('[name="gtypeUpdate"]').val("#gtypeUpdate option:selected");
     $('[name="selectType"]').val("#selectType option:selected");
@@ -309,7 +308,7 @@ function cms_delete() {
 
             }else{
                 for (var i = 0; i < data.inputerror.length; i++){
-                  $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                  $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]);
                 }
             }
             $('#btnUpdateCMS').text('save'); 
@@ -357,15 +356,4 @@ $(document).ready(function() {
 
 });
 </script>
-<script>
-
-// $('body').on('click', '.dashboard_leftNav_category a', function() {
-//       var link = $(this).attr('showSection'); //changed from let link
-//       var show = $('[section="'+link+'"]');
-//       $('[section]').hide();
-//       $('body').find(show).fadeIn();
-//       $('html,body').scrollTop(0);
-//     });
-</script>
-
 </html>

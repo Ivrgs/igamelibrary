@@ -4,8 +4,8 @@ class GameModel extends CI_Model {
   var $table = 'tbl_games';
   var $table_cms = 'tbl_cms';
   var $table_account = 'tbl_user';
-  var $column_order = array('title','repack','size','genre','series','status', 'location', 'date',null); //set column field database for datatable orderable
-  var $column_search = array('title','repack','genre','series','status', 'location', 'date'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+  var $column_order = array('title','repack','size','genre','series','status', 'location', 'date',null);
+  var $column_search = array('title','repack','genre','series','status', 'location', 'date');
   var $order = array('title','series');
 
   public function __construct(){
@@ -130,6 +130,10 @@ class GameModel extends CI_Model {
 
     public function exportData(){
       $q = $this->db->get($this->table);
+      return $q->result();
+		}   
+		public function exportDataCMS(){
+      $q = $this->db->get($this->table_cms);
       return $q->result();
     }   
 

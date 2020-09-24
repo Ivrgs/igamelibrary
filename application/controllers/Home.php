@@ -194,7 +194,6 @@ class Home extends CI_Controller {
 		$header = array("id","title","repack","size","genre", "series", "status", "location", "date", "created_at", "updated_at"); 
 		fputcsv($file, $header);
 
-		$game[] = array();
 		foreach ($data as $g){ 
 			$gam = array();
 			$gam[] = $g->id;
@@ -209,6 +208,31 @@ class Home extends CI_Controller {
 			$gam[] = $g->created_at;
 			$gam[] = $g->updated_at;
 			fputcsv($file,$gam); 
+		}
+
+		fclose($file); 
+		exit;
+	}
+	public function ExportCMS(){
+		$data = $this->GameModel->exportDataCMS();
+
+		$filename = 'gamexcms_backup_'.date('Y-m-d').'.csv'; 
+		header("Content-Description: File Transfer"); 
+		header("Content-Disposition: attachment; filename=$filename"); 
+		header("Content-Type: application/csv; ");
+		$file = fopen('php://output', 'w');
+		
+		$header = array("id","type","title", "created_at", "updated_at"); 
+		fputcsv($file, $header);
+
+		foreach ($data as $g){ 
+			$cms = array();
+			$cms[] = $g->id;
+			$cms[] = $g->type;
+			$cms[] = $g->title;
+			$cms[] = $g->created_at;
+			$cms[] = $g->updated_at;
+			fputcsv($file,$cms); 
 		}
 
 		fclose($file); 

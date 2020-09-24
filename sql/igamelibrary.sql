@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2020 at 06:42 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Generation Time: Sep 21, 2020 at 08:34 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,8 +31,8 @@ CREATE TABLE `tbl_cms` (
   `id` int(11) NOT NULL,
   `type` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -96,8 +95,10 @@ INSERT INTO `tbl_cms` (`id`, `type`, `title`, `created_at`, `updated_at`) VALUES
 (53, 'Repack', 'HOODLUM', '2020-05-10 19:04:57', '2020-05-10 19:04:57'),
 (54, 'Genre', 'Simulation', '2020-05-12 03:43:03', '2020-05-12 03:43:03'),
 (55, 'Status', 'Upcomming', '2020-06-05 13:07:58', '2020-06-05 13:07:58'),
-(114, 'Status', '', '2020-08-07 16:34:01', '2020-08-07 16:34:01'),
-(116, 'Genre', '', '2020-08-07 16:34:17', '2020-08-07 16:34:17');
+(56, 'Status', '', '2020-08-07 16:34:01', '2020-09-21 18:34:05'),
+(57, 'Genre', '', '2020-08-07 16:34:17', '2020-09-21 18:34:08'),
+(58, 'Status', 'Re-Download', '2020-08-28 12:13:37', '2020-09-21 18:34:12'),
+(59, 'Repack', 'Valve', '2020-08-30 14:23:22', '2020-09-21 18:34:15');
 
 -- --------------------------------------------------------
 
@@ -115,8 +116,8 @@ CREATE TABLE `tbl_games` (
   `status` varchar(255) NOT NULL,
   `location` varchar(255) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -161,7 +162,7 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (35, 'Hyperdimension Neptunia: Megadimension Neptunia VII', 'Fitgirl', '5.910', 'Anime', '', 'Installer', 'Main Drive', '2016-08-04', '2020-04-08 16:49:00', '2020-04-08 16:49:00'),
 (36, 'Hyperdimension Neptunia: Megadimension Neptunia VIIR', 'Fitgirl', '5.780', 'Anime', '', 'Installer', 'Main Drive', '2018-10-28', '2020-04-08 16:49:00', '2020-04-08 16:49:00'),
 (37, 'Jump Force: Ultimate Edition', 'Fitgirl', '9.480', 'Anime', '', 'Installer', 'Main Drive', '2020-02-16', '2020-04-08 16:49:00', '2020-04-08 16:49:00'),
-(38, 'Monster Hunter World - Iceborne: Master Edition', 'Fitgirl', '14.000', 'Anime', '', 'Update', 'Main Drive', '2019-03-23', '2020-04-08 16:49:00', '2020-08-20 18:50:48'),
+(38, 'Monster Hunter - World', 'Fitgirl', '14.000', 'Anime', 'v1', 'Installer', 'Main Drive', '2019-03-23', '2020-04-08 16:49:00', '2020-04-08 16:49:00'),
 (39, 'Nier Automata: Day One Edition', 'Fitgirl', '23.400', 'Anime', 'v1', 'Installer', 'Main Drive', '2017-05-20', '2020-04-08 16:49:00', '2020-04-08 16:49:00'),
 (40, 'Nights of Azure', 'CODEX', '4.880', 'Anime', 'v1', 'Installer', 'Main Drive', '2018-10-24', '2020-04-08 16:49:00', '2020-04-08 16:49:00'),
 (41, 'ONINAKI', 'Fitgirl', '1.560', 'Anime', '', 'Installer', 'Main Drive', '2019-08-23', '2020-04-08 16:49:00', '2020-04-08 16:49:00'),
@@ -208,13 +209,13 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (82, 'Minecraft Story Mode - Season 2', 'Fitgirl', '3.160', 'Indie', '', 'Installer', 'Toshiba Drive', '2017-12-22', '2020-04-13 19:00:00', '2020-04-13 19:00:00'),
 (83, 'TDPA - Man of Medan', 'Fitgirl', '17.800', 'Indie', '', 'Installer', 'Toshiba Drive', '2019-08-31', '2020-04-13 19:00:00', '2020-04-13 19:00:00'),
 (84, 'The Wild Eight', '3DM', '1.610', 'Indie', '', 'No Installer', 'Toshiba Drive', '2018-11-20', '2020-04-13 19:00:00', '2020-04-13 19:00:00'),
-(85, 'Age of Empires: Definitive Edition', 'Fitgirl', '6.320', 'RTS', 'v1', 'Downloading', 'Toshiba Drive', '2019-08-21', '2020-04-13 19:00:00', '2020-08-06 01:00:18'),
+(85, 'Age of Empires: Definitive Edition', 'Fitgirl', '8.050', 'RTS', 'v1', 'Installer', 'Toshiba Drive', '2020-07-08', '2020-04-13 19:00:00', '2020-08-30 14:08:30'),
 (86, 'Age of Empires III: Complete Edition', 'Fitgirl', '1.800', 'RTS', 'v3', 'Installer', 'Toshiba Drive', '2019-08-20', '2020-04-13 19:00:00', '2020-07-19 06:51:57'),
 (87, 'Battle Realms WOTW', 'GOG', '0.499', 'RTS', '', 'Installer', 'Toshiba Drive', '2017-01-02', '2020-04-13 19:00:00', '2020-04-13 19:00:00'),
 (88, 'Command and Conquer Red Alert 3 - Dilogy', 'Fitgirl', '7.780', 'RTS', '', 'Installer', 'Toshiba Drive', '2019-05-24', '2020-04-13 19:00:00', '2020-06-22 13:27:27'),
 (89, 'Counter Strike Extreme', 'Sierra', '1.220', 'FPS', '', 'No Installer', 'Toshiba Drive', '2018-03-05', '2020-04-13 19:00:00', '2020-04-13 19:00:00'),
 (90, 'Counter Strike Source', 'Rev', '4.450', 'FPS', '', 'No Installer', 'Toshiba Drive', '2018-03-05', '2020-04-13 19:00:00', '2020-04-13 19:00:00'),
-(91, 'Half-Life', 'Sierra', '0.711', 'FPS', '', 'Installer', 'Toshiba Drive', '2018-03-05', '2020-04-13 19:00:00', '2020-04-13 19:00:00'),
+(91, 'Half-Life Source Quadrilogy', 'Fitgirl', '3.200', 'FPS', '', 'Installer', 'Toshiba Drive', '2020-01-14', '2020-04-13 19:00:00', '2020-08-30 14:25:12'),
 (92, 'Minecraft Java - TLLauncher', 'Fitgirl', '0.002', 'BR', '', 'Installer', 'Toshiba Drive', '2019-08-02', '2020-04-13 19:00:00', '2020-07-19 06:38:47'),
 (93, 'Rocket League', 'Fitgirl', '5.450', 'Sport', '', 'Installer', 'Toshiba Drive', '2020-03-29', '2020-04-13 19:00:00', '2020-05-12 03:44:04'),
 (94, 'RWBY JPNR', 'ALI213', '1.370', 'Anime', '', 'Installer', 'Toshiba Drive', '2019-03-09', '2020-04-13 19:00:00', '2020-04-13 19:00:00'),
@@ -232,8 +233,8 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (106, 'Call of Duty WWII', 'Fitgirl', '47.300', 'FPS', '', 'Update', 'Toshiba Drive', '2018-07-22', '2020-04-13 19:00:00', '2020-04-23 08:58:45'),
 (107, 'Deus EX - Mankind Divided', 'Fitgirl', '20.700', 'FPS', '', 'Installer', 'Backup Drive', '2020-05-01', '2020-04-13 19:00:00', '2020-07-17 13:31:03'),
 (108, 'Sniper Elite v2: Remastered', 'Fitgirl', '5.500', 'FPS', '', 'Installer', 'WD Green Drive', '2019-05-15', '2020-04-13 19:00:00', '2020-07-19 06:54:21'),
-(109, 'Divinity Original Sin: Enchanced Edition', 'Fitgirl', '8.400', 'PC', '', 'Installer', 'Backup Drive', '2016-07-21', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
-(110, 'Divinity Original Sin 2: Definitive Edition', 'Fitgirl', '25.100', 'PC', '', 'Downloading', 'Backup Drive', '2018-09-02', '2020-04-17 02:05:00', '2020-06-22 13:43:08'),
+(109, 'Divinity Original Sin: Enchanced Edition', 'Fitgirl', '8.400', 'PC', 'v1', 'Installer', 'Backup Drive', '2016-07-21', '2020-04-17 02:05:00', '2020-08-30 14:48:39'),
+(110, 'Divinity Original Sin 2: Definitive Edition', 'Fitgirl', '29.900', 'PC', 'v2', 'Installer', 'Backup Drive', '2020-06-13', '2020-04-17 02:05:00', '2020-08-30 14:48:34'),
 (111, 'Fade to Silence', 'Fitgirl', '7.730', 'PC', '', 'Installer', 'Backup Drive', '2019-05-01', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
 (112, 'GreedFall', 'Fitgirl', '11.000', 'PC', '', 'Installer', 'Backup Drive', '2019-09-11', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
 (113, 'Hell Blade Senua', 'GOG', '13.500', 'PC', '', 'Installer', 'Backup Drive', '2018-11-20', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
@@ -254,8 +255,8 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (128, 'Metro - Exodus: Gold Edition', 'Fitgirl', '45.400', 'FPS', '', 'Installer', 'Backup Drive', '2020-05-29', '2020-04-17 02:05:00', '2020-07-17 13:21:14'),
 (129, 'Metro - Redux', 'Fitgirl', '6.170', 'FPS', '', 'Installer', 'Backup Drive', '2019-02-22', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
 (130, 'PREY', 'Fitgirl', '15.200', 'PC', '', 'Installer', 'Backup Drive', '2018-07-24', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
-(131, 'ReCore: Definitive Edition', 'Fitgirl', '8.750', 'PC', '', 'Update', 'Backup Drive', '2018-06-16', '2020-04-17 02:05:00', '2020-08-20 18:47:27'),
-(132, 'Remnant - From the Ashes', 'Fitgirl', '22.600', 'PC', '', 'Update', 'Backup Drive', '2020-04-30', '2020-04-17 02:05:00', '2020-08-20 18:46:11'),
+(131, 'ReCore: Definitive Edition', 'Fitgirl', '8.360', 'PC', '', 'Installer', 'Backup Drive', '2020-08-02', '2020-04-17 02:05:00', '2020-08-30 14:31:15'),
+(132, 'Remnant - From the Ashes', 'Fitgirl', '22.600', 'PC', '', 'Installer', 'Backup Drive', '2020-04-30', '2020-04-17 02:05:00', '2020-05-21 14:40:34'),
 (133, 'Strange Brigade: Deluxe Edition', 'Fitgirl', '15.900', 'PC', '', 'Installer', 'Backup Drive', '2019-01-13', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
 (134, 'The Evil Within: Complete Edition', 'Fitgirl', '12.900', 'PC', '', 'Installer', 'Backup Drive', '2019-03-11', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
 (135, 'The Evil Within II', 'Fitgirl', '12.600', 'PC', '', 'Installer', 'Backup Drive', '2019-03-16', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
@@ -264,7 +265,7 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (139, 'Tomb Raider 2013', 'CorePack', '6.550', 'PC', '', 'Installer', 'Backup Drive', '2015-07-13', '2020-04-17 02:05:00', '2020-04-17 02:05:00'),
 (140, 'Tekken 7: Ultimate Edition', 'Fitgirl', '36.300', 'Anime', '', 'Installer', 'WD Blue Drive', '2019-03-29', '2020-04-17 09:33:27', '2020-04-17 09:33:27'),
 (141, 'Grid: Ultimate Edition', 'Fitgirl', '0.000', 'PC', '', 'Downloading', 'Gigabyte Drive', '2020-04-18', '2020-04-22 04:38:26', '2020-04-22 04:39:26'),
-(142, 'Grand Thief Auto 4: Complete Edition', 'Fitgirl', '13.200', 'PC', '', 'Installer', 'Barracuda Drive', '2020-04-16', '2020-04-22 04:41:06', '2020-05-28 07:28:50'),
+(142, 'Grand Thief Auto IV: Complete Edition', 'Fitgirl', '13.200', 'PC', '', 'Installer', 'Barracuda Drive', '2020-04-16', '2020-04-22 04:41:06', '2020-09-19 12:41:22'),
 (144, 'Dirt Rally 2.0: GOTY Edition', 'Fitgirl', '43.900', 'Racing', '', 'Installer', 'Barracuda Drive', '2020-03-28', '2020-04-22 04:46:35', '2020-05-28 07:52:13'),
 (145, 'Call of Duty - Black ops 3', 'Fitgirl', '0.000', 'FPS', '', 'Downloading', 'Gigabyte Drive', '2020-01-31', '2020-04-22 04:51:06', '2020-04-22 04:51:06'),
 (146, 'Ancestors - The Humankind Odyssey', 'Fitgirl', '3.570', 'PC', '', 'Installer', 'Barracuda Drive', '2020-04-22', '2020-04-23 08:30:45', '2020-05-28 08:40:59'),
@@ -304,7 +305,7 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (180, 'Sid Meier\'s Civilization VI Gathering Storm', 'CODEX', '10.500', 'Simulation', '', 'Installer', 'Toshiba Drive', '2020-03-20', '2020-05-06 11:21:00', '2020-07-19 06:55:37'),
 (181, 'Jurassic World - Evolution: Digital Deluxe Edition', 'Fitgirl', '2.350', 'Simulation', '', 'Installer', 'WD Green Drive', '2018-09-25', '2020-05-06 11:21:00', '2020-05-06 11:21:00'),
 (182, 'The Sims: SimCity 2013: Digital Deluxe', 'Original', '2.290', 'Simulation', '', 'Installer', 'WD Green Drive', '2018-02-06', '2020-05-06 11:21:00', '2020-05-06 11:21:00'),
-(183, 'The Sims 4: Deluxe Edition', 'Fitgirl', '23.600', 'Simulation', '', 'Installer', 'WD Green Drive', '2020-06-07', '2020-05-06 11:21:00', '2020-07-19 07:17:06'),
+(183, 'The Sims 4: Deluxe Edition', 'Fitgirl', '23.600', 'Simulation', '', 'Update', 'WD Green Drive', '2020-06-07', '2020-05-06 11:21:00', '2020-09-11 12:43:24'),
 (184, 'The Sims III: Complete Edition', 'Fitgirl', '15.300', 'Simulation', '', 'Installer', 'WD Green Drive', '2019-10-13', '2020-05-06 11:21:00', '2020-05-06 11:21:00'),
 (185, 'theHunter - Call of the Wild: 2019 Edition', 'Fitgirl', '9.570', 'Simulation', '', 'Installer', 'WD Green Drive', '2019-03-03', '2020-05-06 11:21:00', '2020-05-06 11:21:00'),
 (186, 'PC Building Simulator', 'Fitgirl', '1.040', 'Simulation', '', 'Installer', 'WD Green Drive', '2018-11-20', '2020-05-06 11:21:00', '2020-05-06 11:21:00'),
@@ -313,7 +314,7 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (190, 'Assassin\'s Creed - Rogue', 'Fitgirl', '5.380', 'PC', '', 'Installer', 'Barracuda Drive', '2016-07-14', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (191, 'Assassin\'s Creed 3: Remastered, Liberation', 'Fitgirl', '13.100', 'PC', '', 'Installer', 'Barracuda Drive', '2019-03-30', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (192, 'Bright Memory', 'Fitgirl', '2.610', 'PC', '', 'Installer', 'Barracuda Drive', '2020-03-26', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
-(193, 'Control', 'Fitgirl', '17.100', 'PC', '', 'Installer', 'Barracuda Drive', '2020-03-28', '2020-05-10 19:03:03', '2020-05-12 03:42:20'),
+(193, 'Control', 'Fitgirl', '17.100', 'PC', '', 'Update', 'Barracuda Drive', '2020-03-28', '2020-05-10 19:03:03', '2020-08-28 16:02:12'),
 (194, 'Grand Theft Auto San Andreas', 'HOODLUM', '3.940', 'PC', '', 'Installer', 'Barracuda Drive', '2004-10-22', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (195, 'Grand Theft Auto V', 'Fitgirl', '38.300', 'PC', '', 'Installer', 'Barracuda Drive', '2020-03-23', '2020-05-10 19:03:03', '2020-05-21 14:48:44'),
 (196, 'Just Cause 4: One Day Edition', 'Fitgirl', '17.900', 'PC', '', 'Installer', 'Barracuda Drive', '2018-12-11', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
@@ -337,7 +338,7 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (214, 'Dead Rising: Remastered', 'Fitgirl', '2.290', 'Zombie', 'v1', 'Installer', 'Barracuda Drive', '2016-09-14', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (215, 'DOOM 2016: Final Repack', 'Fitgirl', '39.600', 'Zombie', '', 'Installer', 'Barracuda Drive', '2019-03-18', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (216, 'DOOM Eternal', 'Fitgirl', '25.000', 'Zombie', '', 'Installer', 'Barracuda Drive', '2020-03-21', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
-(217, 'Dying Light - The Following: Enchanced Edition', 'Fitgirl', '11.400', 'Zombie', 'v1', 'Update', 'Barracuda Drive', '2019-12-09', '2020-05-10 19:03:03', '2020-08-20 18:46:32'),
+(217, 'Dying Light: Ultimate Collection', 'Fitgirl', '7.810', 'Zombie', 'v1', 'Installer', 'Barracuda Drive', '2020-08-14', '2020-05-10 19:03:03', '2020-08-30 14:33:23'),
 (218, 'Get Even', 'Fitgirl', '13.500', 'Zombie', '', 'Installer', 'Barracuda Drive', '2017-06-22', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (219, 'Killing Floor 2: Digital Deluxe Edition', 'Fitgirl', '18.400', 'Zombie', '', 'Installer', 'Barracuda Drive', '2019-12-17', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (220, 'OVERKILLs The Walking Dead', 'Fitgirl', '15.700', 'Zombie', '', 'Installer', 'Barracuda Drive', '2018-11-10', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
@@ -348,16 +349,21 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (225, 'State of Decay - Year-One: Survival Edition', 'Fitgirl', '2.120', 'Zombie', '', 'Installer', 'Barracuda Drive', '2016-07-15', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (226, 'State of Decay 2: Juggernaut Edition', 'Fitgirl', '11.200', 'Zombie', '', 'Installer', 'Barracuda Drive', '2020-03-17', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
 (227, 'The Walking Dead - The Telltale Definitive Series', 'Fitgirl', '16.400', 'Zombie', '', 'Installer', 'Barracuda Drive', '2019-09-12', '2020-05-10 19:03:03', '2020-05-10 19:03:03'),
-(228, 'World War Z: GOTY Edition', 'Fitgirl', '19.500', 'Zombie', '', 'Update', 'Barracuda Drive', '2020-05-10', '2020-05-10 19:03:03', '2020-08-20 18:48:08'),
+(228, 'World War Z: GOTY Edition', 'Fitgirl', '19.500', 'Zombie', '', 'Installer', 'Barracuda Drive', '2020-05-10', '2020-05-10 19:03:03', '2020-07-19 06:33:59'),
 (229, 'Mafia II: Definitive Edition', 'Fitgirl', '10.900', 'PC', '', 'Installer', 'Barracuda Drive', '2020-05-20', '2020-05-20 12:20:26', '2020-06-28 14:52:15'),
 (230, 'Mafia III: Definitive Edition', 'Fitgirl', '19.200', 'PC', '', 'Installer', 'Backup Drive', '2020-05-21', '2020-05-20 12:20:42', '2020-06-28 14:52:51'),
 (231, 'Age of Empires II: Definitive Edition', 'Fitgirl', '19.300', 'Simulation', 'v2', 'Installer', 'Toshiba Drive', '2020-05-22', '2020-05-20 12:21:28', '2020-08-08 18:45:21'),
 (233, 'Detroit - Become Human', 'Fitgirl', '0.000', 'Indie', '', 'Downloaded', 'Gigabyte Drive', NULL, '2020-06-21 07:28:43', '2020-08-15 15:39:37'),
 (234, 'Command and Conquer Red Alert: Remastered Collection', 'Fitgirl', '15.200', 'RTS', '', 'Installer', 'Toshiba Drive', '2020-06-05', '2020-06-22 13:32:56', '2020-07-17 13:20:21'),
 (235, 'Saints Row - The Third: Remastered', 'Fitgirl', '13.600', 'PC', '', 'Installer', 'Barracuda Drive', '2020-05-23', '2020-07-17 13:22:40', '2020-07-17 13:22:40'),
-(236, 'Minecraft Dungeons', 'Fitgirl', '0.955', 'PC', '', 'Installer', 'Barracuda Drive', '2020-07-08', '2020-07-17 13:44:39', '2020-07-19 06:37:59'),
+(236, 'Minecraft Dungeons', 'Fitgirl', '0.955', 'PC', '', 'Update', 'Barracuda Drive', '2020-07-08', '2020-07-17 13:44:39', '2020-09-11 12:42:35'),
 (237, 'Horizon: Zero Dawn - Complete Edition', 'Fitgirl', '0.000', 'PC', '', 'Downloading', '', '2020-08-08', '2020-08-09 07:33:02', '2020-08-09 07:33:02'),
-(238, 'Death end re-Quest II', 'Fitgirl', '0.000', 'Anime', 'v2', 'Downloading', '', '2020-08-20', '2020-08-20 18:45:24', '2020-08-20 18:45:24');
+(238, 'Sword Art Online - Alicization Lycoris', 'Fitgirl', '12.300', 'Anime', '', 'Installer', 'Main Drive', '2020-07-11', '2020-08-30 14:29:01', '2020-08-30 14:29:01'),
+(239, 'Beyond - Two Souls', 'Fitgirl', '15.800', 'Indie', '', 'Installer', 'Barracuda Drive', '2020-06-19', '2020-08-30 15:58:04', '2020-08-30 15:58:29'),
+(240, 'Heavy Rain ', 'Fitgirl', '10.000', 'Indie', '', 'Installer', 'Barracuda Drive', '2020-07-28', '2020-08-30 16:05:38', '2020-08-30 16:05:38'),
+(241, 'NBA 2k21', 'Fitgirl', '0.000', 'Sport', '', 'Downloading', '', '2020-09-07', '2020-09-11 12:44:18', '2020-09-11 12:44:18'),
+(242, 'Tell Me Why', 'Fitgirl', '0.000', 'Indie', '', 'Downloading', '', '2020-09-12', '2020-09-11 12:50:32', '2020-09-12 13:42:32'),
+(243, 'Titanfall 2', 'Fitgirl', '0.000', 'FPS', '', 'Downloading', '', '2020-09-16', '2020-09-17 08:14:32', '2020-09-17 08:14:32');
 
 -- --------------------------------------------------------
 
@@ -372,29 +378,9 @@ CREATE TABLE `tbl_user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `verify` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `test`
---
-
-CREATE TABLE `test` (
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `test`
---
-
-INSERT INTO `test` (`date`) VALUES
-('2020-05-23'),
-('2020-08-13'),
-('0000-00-00'),
-('0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -426,13 +412,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cms`
 --
 ALTER TABLE `tbl_cms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `tbl_games`
 --
 ALTER TABLE `tbl_games`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

@@ -10,8 +10,8 @@
                     <input type="button" class="btn btn-success MainButton" onclick="add_game()" value="Add New"  data-toggle="modal" data-target="#ModalAddGame">
                     <input type="button" class="btn btn-info MainButton" onclick="cms_add()" value="CMS-Add" data-toggle="modal" data-target="#ModalCMSAdd">
                     <input type="button" class="btn btn-info MainButton" value="CMS-Update" onclick="cms_edit();" data-toggle="modal" data-target="#ModalCMSUpdate">
-                    <a href="<?= base_url()."Home/Export"?>">
-                    <input type="button" class="btn btn-warning MainButton" value="Export" onclick="simp()"></a>
+					<a href="<?= base_url()."Home/Export"?>"><button class="btn btn-warning MainButton">Export Games</button></a>
+					<a href="<?= base_url()."Home/ExportCMS"?>"><button class="btn btn-warning MainButton">Export CMS</button></a>
                 </div>
             </ul>
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2020 at 08:34 PM
+-- Generation Time: Sep 27, 2020 at 04:08 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -362,8 +362,9 @@ INSERT INTO `tbl_games` (`id`, `title`, `repack`, `size`, `genre`, `series`, `st
 (239, 'Beyond - Two Souls', 'Fitgirl', '15.800', 'Indie', '', 'Installer', 'Barracuda Drive', '2020-06-19', '2020-08-30 15:58:04', '2020-08-30 15:58:29'),
 (240, 'Heavy Rain ', 'Fitgirl', '10.000', 'Indie', '', 'Installer', 'Barracuda Drive', '2020-07-28', '2020-08-30 16:05:38', '2020-08-30 16:05:38'),
 (241, 'NBA 2k21', 'Fitgirl', '0.000', 'Sport', '', 'Downloading', '', '2020-09-07', '2020-09-11 12:44:18', '2020-09-11 12:44:18'),
-(242, 'Tell Me Why', 'Fitgirl', '0.000', 'Indie', '', 'Downloading', '', '2020-09-12', '2020-09-11 12:50:32', '2020-09-12 13:42:32'),
-(243, 'Titanfall 2', 'Fitgirl', '0.000', 'FPS', '', 'Downloading', '', '2020-09-16', '2020-09-17 08:14:32', '2020-09-17 08:14:32');
+(242, 'Tell Me Why', 'Fitgirl', '9.040', 'Indie', '', 'Installer', 'WD Blue Drive', '2020-09-12', '2020-09-11 12:50:32', '2020-09-21 20:52:30'),
+(243, 'Titanfall 2', 'Fitgirl', '0.000', 'FPS', '', 'Downloading', '', '2020-09-16', '2020-09-17 08:14:32', '2020-09-17 08:14:32'),
+(244, 'Half-Life Black Mesa', 'Fitgirl', '8.420', 'FPS', 'v1', 'Installer', 'WD Blue Drive', '2020-03-07', '2020-09-21 20:51:07', '2020-09-21 20:51:29');
 
 -- --------------------------------------------------------
 
@@ -418,7 +419,7 @@ ALTER TABLE `tbl_cms`
 -- AUTO_INCREMENT for table `tbl_games`
 --
 ALTER TABLE `tbl_games`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

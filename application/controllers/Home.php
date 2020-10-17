@@ -60,8 +60,12 @@ class Home extends CI_Controller {
 	public function AddGame(){
 		$this->_validate();
 
-		$strtodate = strtotime($this->input->post('datepickerAddG'));
-		$dateformat = date("Y-m-d", $strtodate);
+		if($this->input->post('datepickerAddG') == ""){
+			$dateformat = "";
+		}else{
+			$strtodate = strtotime($this->input->post('datepickerAddG'));
+			$dateformat = date("Y-m-d", $strtodate);
+		}
 
 		$data = array(
 				'title' => $this->input->post('gtitle'),
@@ -90,8 +94,12 @@ class Home extends CI_Controller {
 
 	public function UpdateGame(){
 		$this->_validate();
-		$strtodate =  strtotime($this->input->post('datepickerAddG'));
-		$dateformat = date("Y-m-d", $strtodate);
+		if($this->input->post('datepickerAddG') == ""){
+			$dateformat = "";
+		}else{
+			$strtodate = strtotime($this->input->post('datepickerAddG'));
+			$dateformat = date("Y-m-d", $strtodate);
+		}
 		
 		$data = array(
 			'title' => $this->input->post('gtitle'),

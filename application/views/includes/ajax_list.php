@@ -179,7 +179,7 @@ function delete_game(id){
 }
 
 function deleteG(){
-    $('#btnDel').text('deleting...');
+    $('#btnDel').text('Deleting...');
     $('#btnDel').attr('disabled',true);
     var formData = new FormData($('#delForm')[0]);
     $.ajax({
@@ -191,10 +191,14 @@ function deleteG(){
         processData: false,
         success: function(data){
             $('#ModalDeleteGame').modal('hide');
+			$('#btnDel').text('Permanent Delete'); 
+            $('#btnDel').attr('disabled',false);  
             reload_table();
         },
         error: function (jqXHR, textStatus, errorThrown){
             console.dir('Error deleting data');
+			$('#btnDel').text('Permanent Delete'); 
+            $('#btnDel').attr('disabled',false);  
         }
     });
 }

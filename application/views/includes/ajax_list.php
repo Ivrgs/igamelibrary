@@ -74,6 +74,12 @@ function add_game(){
     $('.form-group').removeClass('has-error'); 
     $('.help-block').empty();
 
+//DEFAULT VALUE
+	$('[name="ggenre"]').val("PC");
+	$('[name="grepack"]').val("Fitgirl");
+	$('[name="gstatus"]').val("Downloading");
+	$('[name="glocation"]').val("Gigabyte Drive");
+
     $('#modal_form').modal('show'); 
     $('.modal-title').text('Add Game'); 
 }

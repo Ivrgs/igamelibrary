@@ -20,12 +20,12 @@ $(document).ready(function() {
         },
 
         "columnDefs": [{ 
-                "targets": [ -1 ],
+                "targets": [ -1 , -9],
                 "orderable": false,
                 "order": [0, "asc"]
             },  
             {
-                className: "TableAlignment ", targets: [1,6,7] 
+                className: "TableAlignment ", targets: [1,6,7, 8] 
             },
             {
                 className: "TableAlignment Simplified", targets: [2, 5]
@@ -34,7 +34,7 @@ $(document).ready(function() {
                 className: "TableAlignment ExtraSimplified", targets: [3,4]
             },
             {  
-                className: "TableAlignment Button", targets: 8 
+                className: "TableAlignment Button", targets: 9 
             },
             {  
                 className: "TableAlignment Title", targets: 0 
@@ -82,6 +82,9 @@ function add_game(){
 
     $('#modal_form').modal('show'); 
     $('.modal-title').text('Add Game'); 
+    $('#modal_form').on('shown.bs.modal', function(e){
+        $('#gtitle').focus();
+    });
 }
 
 function reload_table(){
@@ -93,7 +96,10 @@ function edit_game(id){
     $('#form')[0].reset(); 
     $('.form-group').removeClass('has-error'); 
     $('.help-block').empty(); 
-  
+	$('#modal_form').on('shown.bs.modal', function(e){
+        $('#gtitle').focus();
+    });
+
     //Ajax Load data from ajax
     $.ajax({
         url : "<?php echo base_url().'DataEdit'?>/" + id,
@@ -166,6 +172,9 @@ function delete_game(id){
     $('#delForm')[0].reset(); 
     $('.form-groupD').removeClass('has-error'); 
     $('.help-block').empty(); 
+	$('#ModalDeleteGame').on('shown.bs.modal', function(e){
+        $('#btnTDel').focus();
+    });
        //Ajax Load data from ajax
     $.ajax({
         url : "<?php echo base_url().'DataEdit'?>/" + id,
@@ -242,9 +251,13 @@ function cms_add(){
     $('.help-block').empty(); 
     $('#modal_cmsadd').modal('show');
     $('.modal-title').text('Add Content');
+	$('#modal_cmsadd').on('shown.bs.modal', function(e){
+        $('#gtitle').focus();
+    });
 }
 
 function save_cms(){
+
     var formData = new FormData($('#formCMS')[0]);
     $.ajax({
         url : "<?php echo site_url('addCMS')?>",
@@ -271,6 +284,9 @@ function cms_edit(){
     $('.help-block').empty(); 
     $('#modal_cmsupdate').modal('show');
     $('.modal-title').text('Update Content');
+	$('#modal_cmsupdate').on('shown.bs.modal', function(e){
+        $('#updateType').focus();
+    });
 
     $('[name="gtypeUpdate"]').val("#gtypeUpdate option:selected");
     $('[name="selectType"]').val("#selectType option:selected");

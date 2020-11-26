@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="FooterCopyright">© 2019 - 2020 iGameLibrary by
-				<a href="https://www.youtube.com/channel/UC8RDEeP-XQjgBgJFsJ8lgrg"> iVrgsTECH.</a>
+				<a href="https://www.youtube.com/channel/UC8RDEeP-XQjgBgJFsJ8lgrg"> iCynicalIce.</a>
 				<span> All Right Reserved.</span>
 			</div>
 		</footer>

@@ -9,7 +9,8 @@
             <table id="table" class="order-column"  width="100%">
                 <thead class="TableHeading">
                 <tr>
-                        <th class="TableAlignment Title">Title</th>
+						<th class="TableAlignment Title">Title</th>
+						<th class="TableAlignment">Version</th>
                         <th class="TableAlignment">Repack</th>
                         <th class="TableAlignment">Series</th>
                         <th class="TableAlignment">Status</th>

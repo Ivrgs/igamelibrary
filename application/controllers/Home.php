@@ -28,6 +28,7 @@ class Home extends CI_Controller {
 			$no++;
 			$row = array();
 			$row[] = $game->title;
+			$row[] = $game->version;
 			$row[] = $game->repack;
 			$row[] = $game->series;
 			$row[] = $game->status;
@@ -69,6 +70,7 @@ class Home extends CI_Controller {
 
 		$data = array(
 				'title' => $this->input->post('gtitle'),
+				'version' =>$this->input->post('gversion'),
 				'repack' => $this->input->post('grepack'),
 				'status' => $this->input->post('gstatus'),
 				'genre' => $this->input->post('ggenre'),
@@ -103,13 +105,14 @@ class Home extends CI_Controller {
 		
 		$data = array(
 			'title' => $this->input->post('gtitle'),
-				'repack' => $this->input->post('grepack'),
-				'status' => $this->input->post('gstatus'),
-				'genre' => $this->input->post('ggenre'),
-				'size' => $this->input->post('gsize'),
-				'location' => $this->input->post('glocation'),
-				'series' => $this->input->post('gseries'),
-				'date' => $dateformat,
+			'version' =>$this->input->post('gversion'),
+			'repack' => $this->input->post('grepack'),
+			'status' => $this->input->post('gstatus'),
+			'genre' => $this->input->post('ggenre'),
+			'size' => $this->input->post('gsize'),
+			'location' => $this->input->post('glocation'),
+			'series' => $this->input->post('gseries'),
+			'date' => $dateformat,
 			);
 
 		$this->home->updateGame(array('id' => $this->input->post('id')), $data);
@@ -121,6 +124,24 @@ class Home extends CI_Controller {
 		$this->home->deleteGame( $this->input->post('id'));
 		echo json_encode(array("status" => TRUE));
 	
+	}
+
+	public function TempDelGame(){
+		$this->_validate();
+		
+		$data = array(
+			'status' => "Deleted",
+			'version' => "",
+			'location' => "",
+			'repack' => "",
+			'size' => "",
+			'genre' => "",
+			'series' => "",
+			'date' => NULL,
+			);
+
+		$this->home->TempDeleteGame(array('id' => $this->input->post('id')), $data);
+		echo json_encode(array("status" => TRUE));
 	}
 
 	//CMS

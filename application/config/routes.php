@@ -55,6 +55,7 @@ $route['DataAdd'] = "home/AddGame";
 $route['DataEdit/(:num)'] = "home/EditGame/$1";
 $route['DataUpdate'] = "home/UpdateGame";
 $route['DataDelete'] = "home/DeleteGame";
+$route['TempDataDelete'] = "home/TempDelGame";
 
 $route['CMSAdd']= "home/AddCMS";
 $route['CMSEdit/(:num)']= "home/EditCMS";

@@ -102,6 +102,7 @@ function edit_game(id){
         success: function(data){
             $('[name="id"]').val(data.id);
             $('[name="gtitle"]').val(data.title);
+			$('[name="gversion"]').val(data.version);
             $('[name="grepack"]').val(data.repack);
             $('[name="gstatus"]').val(data.status);
             $('[name="ggenre"]').val(data.genre);
@@ -205,6 +206,30 @@ function deleteG(){
             console.dir('Error deleting data');
 			$('#btnDel').text('Permanent Delete'); 
             $('#btnDel').attr('disabled',false);  
+        }
+    });
+}
+function TempdeleteG(){
+    $('#btnTDel').text('Deleting...');
+    $('#btnTDel').attr('disabled',true);
+    var formData = new FormData($('#delForm')[0]);
+    $.ajax({
+        url : "<?php echo base_url().'TempDataDelete'?>",
+        type: "POST",
+        data: formData,
+        dataType: "JSON",
+        contentType: false,
+        processData: false,
+        success: function(data){
+            $('#ModalDeleteGame').modal('hide');
+			$('#btnTDel').text('Temporary Delete'); 
+            $('#btnTDel').attr('disabled',false);  
+            reload_table();
+        },
+        error: function (jqXHR, textStatus, errorThrown){
+            console.dir('Error deleting data');
+			$('#btnTDel').text('Temporary Delete'); 
+            $('#btnTDel').attr('disabled',false);  
         }
     });
 }

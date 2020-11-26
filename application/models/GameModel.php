@@ -4,7 +4,7 @@ class GameModel extends CI_Model {
   var $table = 'tbl_games';
   var $table_cms = 'tbl_cms';
   var $table_account = 'tbl_user';
-  var $column_order = array('title','repack','size','genre','series','status', 'location', 'date',null);
+  var $column_order = array('title','version','repack','size','genre','series','status', 'location', 'date',null);
   var $column_search = array('title','repack','genre','series','status', 'location', 'date');
   var $order = array('title','series');
 
@@ -82,6 +82,10 @@ class GameModel extends CI_Model {
     public function deleteGame($id){
       $this->db->where('id', $id);
       $this->db->delete($this->table);
+		}
+		public function TempDeleteGame($where, $data){
+			$this->db->update($this->table, $data, $where);
+      return $this->db->affected_rows();
     }
 
     //CMS

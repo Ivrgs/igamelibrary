@@ -134,7 +134,7 @@
 							</div>
 							<div class="col-md-8">
 								<div class="form-groupC">
-									<input type="text" class="form-control" name="gtitle" id="gtitle">
+									<input type="text" class="form-control" name="addnewcms" id="addnewcms">
 								</div>
 							</div>
 					</div>

@@ -80,7 +80,7 @@ class Home extends CI_Controller {
 				'date' => $dateformat,
 			);
 
-		$insert = $this->home->addGame($data);
+		$this->home->addGame($data);
 		echo json_encode(array("status" => TRUE));
 	}	
 
@@ -127,7 +127,7 @@ class Home extends CI_Controller {
 	}
 
 	public function TempDelGame(){
-		$this->_validate();
+		//$this->_validate();
 		
 		$data = array(
 			'status' => "Deleted",
@@ -162,13 +162,13 @@ class Home extends CI_Controller {
 	}
 
 	public function AddCMS(){
-		$this->_validate();
+		//$this->_validate();
 		$data = array(
 			'type' => $this->input->post('gtype'),
-			'title' => $this->input->post('gtitle'),
+			'title' => $this->input->post('addnewcms'),
 		);
 	
-		$insert = $this->home->addCMS($data);
+		$this->home->addCMS($data);
 		echo json_encode(array("status" => TRUE));
 	}
 

@@ -12,7 +12,7 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
         "order": [0, "asc"],
-
+		"autoWidth": false,
         // Load data for the table's content from an Ajax source
         "ajax": {
             "url": "<?php echo base_url()."Datatables";?>",
@@ -23,9 +23,11 @@ $(document).ready(function() {
                 "targets": [ -1 , -9],
                 "orderable": false,
                 "order": [0, "asc"]
-            },  
+            },  {
+				className: "TableAlignment Version", targets: 1
+			},
             {
-                className: "TableAlignment ", targets: [1,6,7, 8] 
+                className: "TableAlignment ", targets: [6,7, 8] 
             },
             {
                 className: "TableAlignment Simplified", targets: [2, 5]
@@ -252,7 +254,7 @@ function cms_add(){
     $('#modal_cmsadd').modal('show');
     $('.modal-title').text('Add Content');
 	$('#modal_cmsadd').on('shown.bs.modal', function(e){
-        $('#gtitle').focus();
+        $('#addnewcms').focus();
     });
 }
 

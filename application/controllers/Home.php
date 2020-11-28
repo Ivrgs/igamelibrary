@@ -220,13 +220,14 @@ class Home extends CI_Controller {
 		header("Content-Type: application/csv; ");
 		$file = fopen('php://output', 'w');
 		
-		$header = array("id","title","repack","size","genre", "series", "status", "location", "date", "created_at", "updated_at"); 
+		$header = array("id","title", "version", "repack", "size", "genre", "series", "status", "location", "date", "created_at", "updated_at"); 
 		fputcsv($file, $header);
 
 		foreach ($data as $g){ 
 			$gam = array();
 			$gam[] = $g->id;
 			$gam[] = $g->title;
+			$gam[] = $g->version;
 			$gam[] = $g->repack;
 			$gam[] = $g->size;
 			$gam[] = $g->genre;

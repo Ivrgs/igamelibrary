@@ -139,6 +139,15 @@ class GameModel extends CI_Model {
 		public function exportDataCMS(){
       $q = $this->db->get($this->table_cms);
       return $q->result();
-    }   
+		}   
+		
+		public function jsonStatus(){
+			$q = $this->db->get_where($this->table_cms, array('type' => 'Status'));
+			return $q->result();
+		}
+		public function jsonStatusCount($selectData){
+			$q = $this->db->get_where($this->table , array('Status' => $selectData));
+			return $q->num_rows();
+		}
 
 }

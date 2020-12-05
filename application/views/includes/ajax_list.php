@@ -26,8 +26,14 @@ $(document).ready(function() {
             },  {
 				className: "TableAlignment Version", targets: 1
 			},
+			{
+                className: "TableAlignment Size", targets: 6
+            },
+			{
+                className: "TableAlignment Date", targets: [8] 
+            },
             {
-                className: "TableAlignment ", targets: [6,7, 8] 
+                className: "TableAlignment ", targets: [7] 
             },
             {
                 className: "TableAlignment Simplified", targets: [2, 5]
@@ -408,5 +414,34 @@ $(document).ready(function() {
     });
 
 });
+
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+//   var data = google.visualization.arrayToDataTable([
+//   ['Task', 'Hours per Day'],
+//   ['Work', 8],
+//   ['Eat', 2],
+//   ['TV', 4],
+//   ['Gym', 2],
+//   ['Sleep', 8]
+// ]);
+var jsonData = $.ajax({
+    url: "<?php echo base_url(). "home/JsonTest"?>",
+          dataType: "json", 
+          async: false
+          }).response;
+
+		  var data = new google.visualization.DataTable(jsonData);
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('gchart'));
+  chart.draw(data, {'width':550, 'height':400});
+}
+
+
 </script>
 </html>

@@ -1,7 +1,13 @@
-<div class="wrapper">
+
     <div class="aboveBackground"></div>
     <div class="simple-alert"></div>	
     <div class="container-fluid MainContent">
+		<div class="dashboard" id="dashboard">
+			DASHBOARD
+
+			<div id="gchart"></div>
+
+		</div>
         <div class="row DataTableContainer">
             <div class="col-md-0"></div>
             <div class="col-md-12" style="width:100%;">

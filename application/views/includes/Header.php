@@ -20,4 +20,7 @@
         <link href="<?php echo base_url()."assets/css/dataTables.css"?>" rel="stylesheet" type="text/css" >
         
         <link href="<?php echo base_url()."assets/css/custom.css"?>" rel="stylesheet" type="text/css">
-    </head>
+   
+		<!-- Google Chart -->
+		<script src="<?php echo base_url()."assets/js/gchart.js" ?>" type="text/javascript"></script>
+	</head>

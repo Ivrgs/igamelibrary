@@ -21,6 +21,6 @@
         
         <link href="<?php echo base_url()."assets/css/custom.css"?>" rel="stylesheet" type="text/css">
    
-		<!-- Google Chart -->
-		<script src="<?php echo base_url()."assets/js/gchart.js" ?>" type="text/javascript"></script>
+		<!-- Javascript Chart -->
+		<script src="<?php echo base_url()."assets/js/jschart.js" ?>" type="text/javascript"></script>
 	</head>

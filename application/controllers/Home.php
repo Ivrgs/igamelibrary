@@ -289,35 +289,13 @@ class Home extends CI_Controller {
 
 	}
 
-	public function JsonTest()
-	{
+	public function JsonTest(){
 		$selectData =  $this->GameModel->jsonStatus();
-		
-		$out = array();
-		foreach($selectData as $a){
-			$dataarr = array();
-			$dataarr = $a->title;
-			array_push($out, $dataarr);
-		}
-			
-		$a = 0;
-		for($i = 0; $i < count($out); $i++){
-			$a =+ $i;
-			echo json_encode($this->GameModel->jsonStatusCount($out[$i])).", ";
-			
-		}
-$ar = array('1','2','3','4','5','6','7','8','9','10','11','12','13','14');
-		$data = array(  
-			
-			'cols' => $out,
-		//	'rows' => $countData,
 
-		
-		// 'rows' => $a,
-		'rows' => $ar,
-	);
-
-	echo	json_encode($countData = $this->GameModel->jsonStatusCount($out[1]));
+		$data = array();
+		foreach ($selectData as $row) {
+			$data[] = $row->title;
+		}
 		echo json_encode($data);
 	}
 }

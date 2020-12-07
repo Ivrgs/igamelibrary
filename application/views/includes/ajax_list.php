@@ -414,34 +414,53 @@ $(document).ready(function() {
     });
 
 });
+//JS Chart
+	var chartName = [];
+	var multiColor = [];
 
-// Load google charts
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+	var dynamicColors = function() {
+			var r = Math.floor(Math.random() * 255);
+			var g = Math.floor(Math.random() * 255);
+			var b = Math.floor(Math.random() * 255);
+			return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+	}
+		
+	$.ajax({
+			type: "get",
+			url: "<?php echo base_url(). "home/JsonTest"?>", 
+			async: false,
+			dataType: "JSON",
+			success: function(response) { 
 
-// Draw the chart and set the chart values
-function drawChart() {
-//   var data = google.visualization.arrayToDataTable([
-//   ['Task', 'Hours per Day'],
-//   ['Work', 8],
-//   ['Eat', 2],
-//   ['TV', 4],
-//   ['Gym', 2],
-//   ['Sleep', 8]
-// ]);
-var jsonData = $.ajax({
-    url: "<?php echo base_url(). "home/JsonTest"?>",
-          dataType: "json", 
-          async: false
-          }).response;
+				for (var i in response) {
+					chartName.push(response[i]);
+				}
 
-		  var data = new google.visualization.DataTable(jsonData);
-
-  // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('gchart'));
-  chart.draw(data, {'width':550, 'height':400});
-}
-
-
+				for (var a = 0; a<response.length; a++){
+					multiColor.push(dynamicColors())
+				}				
+				var ctx = document.getElementById('myChart').getContext('2d');
+				var myPieChart = new Chart(ctx, {
+					type: 'pie',
+					data:  {
+						labels: chartName,
+						datasets: [{
+							label: "oh no",
+							data:["1","4","6","4"],
+							backgroundColor: multiColor,
+							borderColor: "#424242",
+							borderWidth: 1
+						}]
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'Game Status',
+							
+						}
+					}
+				});
+			}
+		});
 </script>
 </html>

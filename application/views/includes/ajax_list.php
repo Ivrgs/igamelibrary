@@ -415,7 +415,20 @@ $(document).ready(function() {
 
 });
 //JS Chart
+function HideRepack(){
+
+	var x = document.getElementById("myChart");
+  	if (x.style.display === "none") {
+    	x.style.display = "block";
+		JSChartRepack();
+	} else {
+    	x.style.display = "none";
+  	}
+}
+
+function JSChartRepack(){
 	var chartName = [];
+	var chartData = [];
 	var multiColor = [];
 
 	var dynamicColors = function() {
@@ -424,19 +437,21 @@ $(document).ready(function() {
 			var b = Math.floor(Math.random() * 255);
 			return "rgba(" + r + "," + g + "," + b + ", 0.5)";
 	}
-		
 	$.ajax({
 			type: "get",
-			url: "<?php echo base_url(). "home/JsonTest"?>", 
+			url: "<?php echo base_url(). "home/chartRepack"?>", 
 			async: false,
 			dataType: "JSON",
 			success: function(response) { 
 
-				for (var i in response) {
-					chartName.push(response[i]);
-				}
-
-				for (var a = 0; a<response.length; a++){
+				for (var i = 0; i < response['cols'].length; i++) { 
+					chartName.push(response['cols'][i])
+				}	
+				for (var i = 0; i < response['rows'].length; i++) { 
+					chartData.push(response['rows'][i])
+				}	
+				console.log();
+				for (var a = 0; a<response['cols'].length; a++){
 					multiColor.push(dynamicColors())
 				}				
 				var ctx = document.getElementById('myChart').getContext('2d');
@@ -446,7 +461,7 @@ $(document).ready(function() {
 						labels: chartName,
 						datasets: [{
 							label: "oh no",
-							data:["1","4","6","4"],
+							data: chartData,
 							backgroundColor: multiColor,
 							borderColor: "#424242",
 							borderWidth: 1
@@ -455,12 +470,13 @@ $(document).ready(function() {
 					options: {
 						title: {
 							display: true,
-							text: 'Game Status',
+							text: 'Game Repack',
 							
 						}
 					}
 				});
 			}
 		});
+}
 </script>
 </html>

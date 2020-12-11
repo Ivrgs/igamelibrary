@@ -88,7 +88,7 @@ class GameModel extends CI_Model {
       return $this->db->affected_rows();
     }
 
-    //CMS
+    //CMS Titles
     public function getCMSRepack(){
       $q = $this->db->order_by("title", "asc")->get_where($this->table_cms, array('type' => 'repack'));
       return $q->result();
@@ -102,7 +102,7 @@ class GameModel extends CI_Model {
         return $q->result();
     }
     public function getCMSLocation(){
-        $q = $this->db->distinct()->order_by("title", "asc")->get_where($this->table_cms, array('type' => 'location'));
+        $q = $this->db->order_by("title", "asc")->get_where($this->table_cms, array('type' => 'location'));
         return $q->result();
     }
     public function getCMSTypes(){     
@@ -115,6 +115,49 @@ class GameModel extends CI_Model {
       return $q->result();
  }
 
+	 //CMS Count
+	public function getCountRepack($selectData){
+		$arra1 = array();
+		foreach($selectData as $value) {
+			$temp = array();
+			$q = $this->db->get_where($this->table , array('repack' => $value));
+			$temp = json_encode($q->num_rows());
+			array_push($arra1, $temp);		
+		}
+		return $arra1;
+	}
+	public function getCountStatus($selectData){
+		$arra1 = array();
+		foreach($selectData as $value) {
+			$temp = array();
+			$q = $this->db->get_where($this->table , array('repack' => $value));
+			$temp = json_encode($q->num_rows());
+			array_push($arra1, $temp);		
+		}
+		return $arra1;
+	}
+	public function getCountGenre($selectData){
+		$arra1 = array();
+		foreach($selectData as $value) {
+			$temp = array();
+			$q = $this->db->get_where($this->table , array('repack' => $value));
+			$temp = json_encode($q->num_rows());
+			array_push($arra1, $temp);		
+		}
+		return $arra1;
+	}
+	public function getCountLocation($selectData){
+		$arra1 = array();
+		foreach($selectData as $value) {
+			$temp = array();
+			$q = $this->db->get_where($this->table , array('location' => $value));
+			$temp = json_encode($q->num_rows());
+			array_push($arra1, $temp);		
+		}
+		return $arra1;
+	}
+
+	//CMS Functions
     public function addCMS($data){
       $this->db->insert($this->table_cms, $data);
     }
@@ -141,13 +184,6 @@ class GameModel extends CI_Model {
       return $q->result();
 		}   
 		
-		public function jsonStatus(){
-			$q = $this->db->get_where($this->table_cms, array('type' => 'Status'));
-			return $q->result();
-		}
-		public function jsonStatusCount($selectData){
-			$q = $this->db->get_where($this->table , array('Status' => $selectData));
-			return $q->num_rows();
-		}
+	
 
 }

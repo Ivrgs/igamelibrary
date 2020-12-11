@@ -203,7 +203,7 @@ class Home extends CI_Controller {
 	public function UpdateDelete(){
 		$loc = strtolower($this->input->post('gtypeUpdate'));
 		$new =  array(
-			$loc => "N/A",
+			$loc => " ",
 		
 		);
 		$this->home->updateTableCMS(array($loc => $this->input->post('selectType')), $new);
@@ -289,13 +289,64 @@ class Home extends CI_Controller {
 
 	}
 
-	public function JsonTest(){
-		$selectData =  $this->GameModel->jsonStatus();
+	public function chartRepack(){
+		$selectData =  $this->GameModel->getCMSRepack();
+		$Title = array();
 
-		$data = array();
 		foreach ($selectData as $row) {
-			$data[] = $row->title;
+			$Title[] = $row->title;		
 		}
+
+		$data = array(
+			'cols' => $Title,
+			'rows' => $this->GameModel->getCountRepack($Title),
+		);
+
+		echo json_encode($data);
+	}
+	public function chartStatus(){
+		$selectData =  $this->GameModel->getCMSStatus();
+		$Title = array();
+
+		foreach ($selectData as $row) {
+			$Title[] = $row->title;		
+		}
+
+		$data = array(
+			'cols' => $Title,
+			'rows' => $this->GameModel->getCountRepack($Title),
+		);
+		
+		echo json_encode($data);
+	}
+	public function chartGenre(){
+		$selectData =  $this->GameModel->getCMSGenre();
+		$Title = array();
+
+		foreach ($selectData as $row) {
+			$Title[] = $row->title;		
+		}
+
+		$data = array(
+			'cols' => $Title,
+			'rows' => $this->GameModel->getCountGenre($Title),
+		);
+		
+		echo json_encode($data);
+	}
+	public function chartLocation(){
+		$selectData =  $this->GameModel->getCMSLocation();
+		$Title = array();
+
+		foreach ($selectData as $row) {
+			$Title[] = $row->title;		
+		}
+
+		$data = array(
+			'cols' => $Title,
+			'rows' => $this->GameModel->getCountLocation($Title),
+		);
+		
 		echo json_encode($data);
 	}
 }

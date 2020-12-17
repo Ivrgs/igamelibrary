@@ -5,53 +5,86 @@ class Home extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->helper(array('form','url', 'string'));
-        $this->load->library(array('form_validation','session'));
+        $this->load->library(array('form_validation','email'));
 		$this->load->model('GameModel','home');
 		$this->load->model('UserModel');
     }
 
 	public function index(){
+		if($_SESSION['data'] == TRUE){
+			redirect(base_url()."Inventory");
+		}else{
 			$this->load->view('includes/Header');
 			$this->load->view('includes/NavigatorNo');
 			$this->load->view('loginpage');
 			$this->load->view('includes/Footer');
+		}
 	}
 	public function Inventory(){
+		if($_SESSION['data'] == TRUE){
 			$this->load->view('includes/Header');
 			$this->load->view('includes/Navigator');
 			$this->load->view('index');
 			$this->load->view('includes/Modals');
 			$this->load->view('includes/Footer');
 			$this->load->view('includes/ajax_list');
+
+		}else{
+			redirect(base_url());
+		}
+			
 	}
+	
 	public function Logout(){
+		$_SESSION['data'] = FALSE;
 		redirect(base_url());
 	}
+
 	public function Login(){
-		$user = $this->input->post('email');
-		$logon = $this->UserModel->getUser($user);
-
-		$this->form_validation->set_rules('password', 'Password Confirmation', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required');
-		
-		if ($this->form_validation->run() == FALSE){
-			redirect(base_url());
+		if($_SESSION['data'] == TRUE){
+			redirect(base_url()."Inventory");
 		}else{
-			if ($logon->email == $this->input->post('email')) {
-				if (password_verify($this->input->post('password'), $logon->password)) {
-					redirect(base_url()."Inventory");
-				} else {
-					redirect(base_url());
-				}
-			}else{
-				redirect(base_url());
-			}	
-		}
+			$user = $this->input->post('email');
+			$logon = $this->UserModel->getUser($user);
 
-		
-	
-		
+			$this->form_validation->set_rules('password', 'Password Confirmation', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
+			
+			if ($this->form_validation->run() == FALSE){
+				redirect(base_url());
+			}else{
+				if ($logon->email == $this->input->post('email')) {
+					if (password_verify($this->input->post('password'), $logon->password)) {
+						$data = array(
+							'Logged_in' => TRUE,
+						);
+
+						$_SESSION['data'] = $data;
+						redirect(base_url()."Inventory", $_SESSION);
+					} else {
+						redirect(base_url());
+					}
+				}else{
+					redirect(base_url());
+				}	
+			}
+		}
 	}
+
+	public function Register(){
+		if($_SESSION['data'] == TRUE){
+			$data = array(
+				'email' => $this->input->post('reg_email'),
+				'password' => password_hash($this->input->post('reg_password'), PASSWORD_BCRYPT),
+				'verify' => uniqid(),
+			);
+			$this->UserModel->insertUser($data);
+			redirect(base_url()."Inventory");
+		}else{
+			redirect(base_url());
+		}
+	}
+
 	//GAMES
 	public function GameList(){
 		
@@ -247,61 +280,69 @@ class Home extends CI_Controller {
 
 	//EXPORT CSV
 	public function Export(){
-		$data = $this->GameModel->exportData();
+		if($_SESSION['data'] == TRUE){
+			$data = $this->GameModel->exportData();
 
-		$filename = 'gamex_backup_'.date('Y-m-d').'.csv'; 
-		header("Content-Description: File Transfer"); 
-		header("Content-Disposition: attachment; filename=$filename"); 
-		header("Content-Type: application/csv; ");
-		$file = fopen('php://output', 'w');
-		
-		$header = array("id","title", "version", "repack", "size", "genre", "series", "status", "location", "date", "created_at", "updated_at"); 
-		fputcsv($file, $header);
+			$filename = 'gamex_backup_'.date('Y-m-d').'.csv'; 
+			header("Content-Description: File Transfer"); 
+			header("Content-Disposition: attachment; filename=$filename"); 
+			header("Content-Type: application/csv; ");
+			$file = fopen('php://output', 'w');
+			
+			$header = array("id","title", "version", "repack", "size", "genre", "series", "status", "location", "date", "created_at", "updated_at"); 
+			fputcsv($file, $header);
 
-		foreach ($data as $g){ 
-			$gam = array();
-			$gam[] = $g->id;
-			$gam[] = $g->title;
-			$gam[] = $g->version;
-			$gam[] = $g->repack;
-			$gam[] = $g->size;
-			$gam[] = $g->genre;
-			$gam[] = $g->series;
-			$gam[] = $g->status;
-			$gam[] = $g->location;
-			$gam[] = $g->date;
-			$gam[] = $g->created_at;
-			$gam[] = $g->updated_at;
-			fputcsv($file,$gam); 
+			foreach ($data as $g){ 
+				$gam = array();
+				$gam[] = $g->id;
+				$gam[] = $g->title;
+				$gam[] = $g->version;
+				$gam[] = $g->repack;
+				$gam[] = $g->size;
+				$gam[] = $g->genre;
+				$gam[] = $g->series;
+				$gam[] = $g->status;
+				$gam[] = $g->location;
+				$gam[] = $g->date;
+				$gam[] = $g->created_at;
+				$gam[] = $g->updated_at;
+				fputcsv($file,$gam); 
+			}
+
+			fclose($file); 
+			exit;
+		}else{
+			redirect(base_url());
 		}
-
-		fclose($file); 
-		exit;
 	}
 	public function ExportCMS(){
-		$data = $this->GameModel->exportDataCMS();
+		if($_SESSION['data'] == TRUE){
+			$data = $this->GameModel->exportDataCMS();
 
-		$filename = 'gamexcms_backup_'.date('Y-m-d').'.csv'; 
-		header("Content-Description: File Transfer"); 
-		header("Content-Disposition: attachment; filename=$filename"); 
-		header("Content-Type: application/csv; ");
-		$file = fopen('php://output', 'w');
-		
-		$header = array("id","type","title", "created_at", "updated_at"); 
-		fputcsv($file, $header);
+			$filename = 'gamexcms_backup_'.date('Y-m-d').'.csv'; 
+			header("Content-Description: File Transfer"); 
+			header("Content-Disposition: attachment; filename=$filename"); 
+			header("Content-Type: application/csv; ");
+			$file = fopen('php://output', 'w');
+			
+			$header = array("id","type","title", "created_at", "updated_at"); 
+			fputcsv($file, $header);
 
-		foreach ($data as $g){ 
-			$cms = array();
-			$cms[] = $g->id;
-			$cms[] = $g->type;
-			$cms[] = $g->title;
-			$cms[] = $g->created_at;
-			$cms[] = $g->updated_at;
-			fputcsv($file,$cms); 
+			foreach ($data as $g){ 
+				$cms = array();
+				$cms[] = $g->id;
+				$cms[] = $g->type;
+				$cms[] = $g->title;
+				$cms[] = $g->created_at;
+				$cms[] = $g->updated_at;
+				fputcsv($file,$cms); 
+			}
+
+			fclose($file); 
+			exit;
+		}else{
+			redirect(base_url());
 		}
-
-		fclose($file); 
-		exit;
 	}
 
 	//Field Validations

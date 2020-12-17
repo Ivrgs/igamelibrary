@@ -4,7 +4,7 @@
 
 		<form class="form" role="form" method="post" action="<?= base_url().'Home/login'?>"  accept-charset="utf-8">
 				<div class="col-md-12">
-					<h2 class="modified">Authorized Personel</h2>
+					<h2 class="modified">Authorized Personel Only</h2>
 					<div class="row">
 						<div class="col-md-8 loginbuttonDiv">
 							<div class="form-group">

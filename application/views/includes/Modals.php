@@ -194,3 +194,54 @@
 	</div>
 </div>
 
+<!-- Export Modal -->
+<div class="modal fade" id="ModalExport" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Export Data</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body form">
+				<div class="row">
+					<a href="<?= base_url()."Home/Export"?>" class="ExportButton"><button class="btn btn-warning ExportButton" title="Export CSV"><span class="icon mobile"><img src="assets/images/export_games.svg" /></span>Export Games</button></a>
+				</div>
+				<div class="row">
+					<a href="<?= base_url()."Home/ExportCMS"?>" class="ExportButton"><button class="btn btn-warning ExportButton" title="Export Content"><span class="icon mobile"><img src="assets/images/export_cms.svg" /></span>Export CMS</button></a>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button"  id="btnDeleteCMS" data-dismiss="modal" class="btn btn-danger">Close</button>
+			</div>
+    </div>
+	</div>
+</div>
+
+<!-- Export Modal -->
+<div class="modal fade" id="ModalRegister" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Register an Account</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body form">
+				<form method="post" action="<?= base_url()."Home/Register"?>">
+				<div class="form-group">
+					Email Address:
+					<input type="email" class="form-control" name="reg_email" id="reg_email" required>
+</div><div class="form-group">
+					Password:
+					<input type="password" class="form-control" name="reg_password" id="reg_password" required></div>
+					<div class="form-group">Confirm Password:
+					<input type="password" class="form-control" name="reg_conf" id="reg_conf" required></div>
+				
+			</div>
+			<div class="modal-footer"><div class="form-group">
+				<button type="submit"  id="" class="btn btn-success">Register</button></div>
+				<button type="button"  id="btnDeleteCMS" data-dismiss="modal" class="btn btn-danger">Close</button>
+				</form>
+			</div>
+    </div>
+	</div>
+</div>

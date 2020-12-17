@@ -12,5 +12,8 @@ class UserModel extends CI_Model {
         $q = $this->db->get_where('tbl_users', array('email' => $user));
         return $q->row();
   }
+  public function insertUser($data)  {
+      $this->db->insert('tbl_users', $data);
+  }
 
 }

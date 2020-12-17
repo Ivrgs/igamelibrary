@@ -5,22 +5,56 @@ class Home extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->helper(array('form','url', 'string'));
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation','session'));
 		$this->load->model('GameModel','home');
-
+		$this->load->model('UserModel');
     }
 
 	public function index(){
-		$this->load->view('includes/Header');
-		$this->load->view('includes/Navigator');
-		$this->load->view('index');
-		$this->load->view('includes/Modals');
-		$this->load->view('includes/Footer');
-		$this->load->view('includes/ajax_list');
+			$this->load->view('includes/Header');
+			$this->load->view('includes/NavigatorNo');
+			$this->load->view('loginpage');
+			$this->load->view('includes/Footer');
 	}
+	public function Inventory(){
+			$this->load->view('includes/Header');
+			$this->load->view('includes/Navigator');
+			$this->load->view('index');
+			$this->load->view('includes/Modals');
+			$this->load->view('includes/Footer');
+			$this->load->view('includes/ajax_list');
+	}
+	public function Logout(){
+		redirect(base_url());
+	}
+	public function Login(){
+		$user = $this->input->post('email');
+		$logon = $this->UserModel->getUser($user);
 
+		$this->form_validation->set_rules('password', 'Password Confirmation', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		
+		if ($this->form_validation->run() == FALSE){
+			redirect(base_url());
+		}else{
+			if ($logon->email == $this->input->post('email')) {
+				if (password_verify($this->input->post('password'), $logon->password)) {
+					redirect(base_url()."Inventory");
+				} else {
+					redirect(base_url());
+				}
+			}else{
+				redirect(base_url());
+			}	
+		}
+
+		
+	
+		
+	}
 	//GAMES
 	public function GameList(){
+		
 		$list = $this->home->get_datatables();
 		$data = array();
 		$no = $_POST['start'];
@@ -56,6 +90,7 @@ class Home extends CI_Controller {
 			"data" => $data,
 		);
 		echo json_encode($output);
+	
 	}
 
 	public function AddGame(){

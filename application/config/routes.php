@@ -50,6 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Home';
+$route['Inventory'] = 'Home/inventory';
+
 $route['Datatables'] = "home/GameList";
 $route['DataAdd'] = "home/AddGame";
 $route['DataEdit/(:num)'] = "home/EditGame/$1";

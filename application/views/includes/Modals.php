@@ -15,14 +15,14 @@
 							<div class="form-group">
 								<label class="control-label">Title</label>
 								<input type="text" class="form-control" name="gtitle" id="gtitle">
-								<span class="help-block" style="color:red;"></span>
+								<span class="help-block notif" ></span>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class="control-label">Version</label>
 								<input type="text" class="form-control" name="gversion" id="gversion">
-								<span class="help-block" style="color:red;"></span>
+								<span class="help-block notif" ></span>
 							</div>
 						</div>
 
@@ -179,7 +179,7 @@
 							<div class="form-groupCU">
 							<label></label>
 								<input type="text" class="form-control" name="updateType" id="updateType">
-								<span class="help-block" style="color:red;"></span>
+								<span class="help-block notif" ></span>
 							</div>
 						</div>
 					</div>

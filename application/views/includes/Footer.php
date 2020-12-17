@@ -1,9 +1,5 @@
 		<footer class="InputFullWidth">
-			<div class="row">
-				<div class="col-md-12">
-				<div class="BelowDivider"></div>
-				</div>
-			</div>
+		<div class="BelowDivider"></div>
 			<div class="row FooterColor">
 				<div class="col-md-9"></div>
 			</div>

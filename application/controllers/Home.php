@@ -11,6 +11,7 @@ class Home extends CI_Controller {
     }
 
 	public function index(){
+		error_reporting(0);
 		if($_SESSION['data'] == TRUE){
 			redirect(base_url()."Inventory");
 		}else{

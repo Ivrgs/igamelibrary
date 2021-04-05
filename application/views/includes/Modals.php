@@ -73,8 +73,14 @@
 								</div>
 							</div>
 						</div>
-						</div></div>
-					</form>
+							<div class="row">
+								<div class="col-md-12">
+								Description:
+									<textarea rows="10" class="form-control" name="text"></textarea>
+								</div>
+							</div>
+					</div>
+				</form>
 			</div>
 			<div class="modal-footer">
 					<button type="button" id="btnSave" onclick="save();myAlertAdd();" class="btn btn-primary">Save</button>

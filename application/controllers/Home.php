@@ -152,10 +152,13 @@ class Home extends CI_Controller {
 		$strtodate = strtotime($this->input->post('datepickerAddG'));
 		$dateText = date("F d Y", $strtodate);
 
-		$content = $this->input->post('gtitle') . " " . $this->input->post('gversion') ."\n" . $dateText . "\n" . $this->input->post('text');
-		$fp = fopen('C:\\Users\\Ivrgs\\Downloads\\' . $this->input->post('gtitle') . ".txt","w");
-		fwrite($fp,$content);
-		fclose($fp);
+		if($this->input->post('gstatus') == "Downloading"){
+			$conv = str_ireplace( array( '\'', '"', ',' , ';', '<', '>',':','|','/','*','?' ), '', $this->input->post('gtitle'));
+			$content = $this->input->post('gtitle') . " " . $this->input->post('gversion') ."\n" . $dateText . "\n" . $this->input->post('text');
+			$fp = fopen('C:\\Users\\Ivrgs\\Downloads\\' . $conv . ".txt","w");
+			fwrite($fp,$content);
+			fclose($fp);
+		}
 
 		$this->home->addGame($data);
 		echo json_encode(array("status" => TRUE));
@@ -192,13 +195,16 @@ class Home extends CI_Controller {
 			'date' => $dateformat,
 			);
 
-		$strtodate = strtotime($this->input->post('datepickerAddG'));
-		$dateText = date("F d Y", $strtodate);
-
-		$content = $this->input->post('gtitle') . " " . $this->input->post('gversion') ."\n" . $dateText . "\n" . $this->input->post('text');
-		$fp = fopen('C:\\Users\\Ivrgs\\Downloads\\' . $this->input->post('gtitle') . ".txt","w");
-		fwrite($fp,$content);
-		fclose($fp);
+		if($this->input->post('gstatus') == "Update"){			
+			$conv = str_ireplace( array( '\'', '"', ',' , ';', '<', '>',':','|','/','*','?' ), '', $this->input->post('gtitle'));
+			$strtodate = strtotime($this->input->post('datepickerAddG'));
+			$dateText = date("F d, Y", $strtodate);
+	
+			$content = $this->input->post('gtitle') . " " . $this->input->post('gversion') ."\n" . $dateText . "\n" . $this->input->post('text');
+			$fp = fopen('C:\\Users\\Ivrgs\\Downloads\\' . $conv . ".txt","w");
+			fwrite($fp,$content);
+			fclose($fp);
+		}
 
 		$this->home->updateGame(array('id' => $this->input->post('id')), $data);
 		echo json_encode(array("status" => TRUE));

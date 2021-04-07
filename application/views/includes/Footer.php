@@ -4,8 +4,8 @@
 				<div class="col-md-9"></div>
 			</div>
 
-			<div class="FooterCopyright">© 2019 - 2020 iGameLibrary by
-				<a href="https://www.youtube.com/channel/UC8RDEeP-XQjgBgJFsJ8lgrg"> iCynicalIce.</a>
+			<div class="FooterCopyright">© 2019 - 2021 iGameLibrary by
+				<a href="https://github.com/Ivrgs"> iCynicalIce.</a>
 				<span> All Right Reserved.</span>
 			</div>
 		</footer>

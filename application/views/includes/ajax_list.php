@@ -86,7 +86,7 @@ function add_game(){
 	$('[name="ggenre"]').val("PC");
 	$('[name="grepack"]').val("Fitgirl");
 	$('[name="gstatus"]').val("Downloading");
-	$('[name="glocation"]').val("Gigabyte Drive");
+	$('[name="glocation"]').val("WD Blue Drive");
 
     $('#modal_form').modal('show'); 
     $('.modal-title').text('Add Game'); 
@@ -106,6 +106,7 @@ function edit_game(id){
     $('.help-block').empty(); 
 	$('#modal_form').on('shown.bs.modal', function(e){
         $('#gtitle').focus();
+        $(".TextField").hide(1000)
     });
 
     //Ajax Load data from ajax
@@ -413,6 +414,16 @@ $(document).ready(function() {
         }
     });
 
+});
+
+$(document).ready(function() {
+    $("#gstatus").blur(function() {
+        if($("#gstatus").val() == 'Update' || $("#gstatus").val() == "Downloading"){
+            $(".TextField").show(1000)
+        } else{
+            $(".TextField").hide(1000)
+        }
+    });
 });
 //JS Chart
 function HideRepack(){

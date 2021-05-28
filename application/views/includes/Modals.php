@@ -74,10 +74,10 @@
 								</div>
 							</div>
 
-							<div class="row">
+							<div class="row TextField">
 								<div class="col-md-12">
 								Description:
-									<textarea rows="10" class="form-control" name="text"></textarea>
+									<textarea rows="10" class="form-control gametext" name="text"></textarea>
 								</div>
 							</div>
 						</div>
@@ -148,10 +148,10 @@
 					</div>
 				</form>
 			</div>
-		</div>
-		<div class="modal-footer">
-				<button type="button" id="btnSave" onclick="save_cms()" class="btn btn-primary">Save</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+			<div class="modal-footer">
+					<button type="button" id="btnSave" onclick="save_cms()" class="btn btn-primary">Save</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+			</div>
 		</div>
     </div>
 </div>

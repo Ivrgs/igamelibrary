@@ -150,14 +150,14 @@ class Home extends CI_Controller {
 			);
 
 		$strtodate = strtotime($this->input->post('datepickerAddG'));
-		$dateText = date("F d Y", $strtodate);
+		$dateText = date("F d, Y", $strtodate);
 		
 		if($this->input->post('text') == ""){
 			
 		}else if($this->input->post('gstatus') == "Downloading"){
 			$conv = str_ireplace( array( '\'', '"', ',' , ';', '<', '>',':','|','/','*','?' ), '', $this->input->post('gtitle'));
 			$content = $this->input->post('gtitle') . " " . $this->input->post('gversion') ."\n" . $dateText . "\n" . $this->input->post('text');
-			$fp = fopen('C:\\Users\\Ivrgs\\Downloads\\' . $conv . ".txt","w");
+			$fp = fopen('E:\\Library\\Downloads\\' . $conv . ".txt","w");
 			fwrite($fp,$content);
 			fclose($fp);
 		}
@@ -204,7 +204,7 @@ class Home extends CI_Controller {
 			$dateText = date("F d, Y", $strtodate);
 	
 			$content = $this->input->post('gtitle') . " " . $this->input->post('gversion') ."\n" . $dateText . "\n" . $this->input->post('text');
-			$fp = fopen('C:\\Users\\Ivrgs\\Downloads\\' . $conv . ".txt","w");
+			$fp = fopen('E:\\Library\\Downloads\\' . $conv . ".txt","w");
 			fwrite($fp,$content);
 			fclose($fp);
 		}
